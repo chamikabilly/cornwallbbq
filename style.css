@@ -79,6 +79,8 @@ html {
  */
 body {
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 /**
@@ -402,11 +404,6 @@ html {
 --------------------------------------------- */
 .sticky {
 	display: block;
-}
-
-.post,
-.page {
-	margin: 0 0 1.5em;
 }
 
 .updated:not(.published) {

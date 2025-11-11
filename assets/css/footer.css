@@ -1,0 +1,227 @@
+/* First Column  */
+
+section.footer {
+    background: #212320;
+    color: #fff;
+    padding: 50px 100px;
+}
+
+section.footer .footer-container {
+    padding: 20px;
+}
+
+.footer-logo-holder {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+section.footer .footer-logo-holder a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+section.footer .footer-information ul {
+    padding: 0;
+    list-style: none;
+    line-height: 30px;
+}
+
+section.footer .footer-information ul li {
+    margin-bottom: 20px;
+}
+
+section.footer .fi-li-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+section.footer .fi-icon-wrapper i {
+    font-size: 20px;
+    color: var(--color-deep-red);
+}
+
+section.footer .fi-icon-wrapper {
+    padding-right: 20px;
+}
+
+section.footer .fi-desc {
+    font-family: 'Poppins';
+    line-height: 20px;
+    width: 70%;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+section.footer .fi-desc a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+
+/* Second Column  */
+
+section.footer .footer-section-title {
+    font-size: 30px;
+    font-family: var(--font-family-rancho);
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffffff1a;
+    margin-bottom: 20px;
+}
+
+section.footer .footer-oh .table tr {
+    border-bottom: 1px solid #ffffff8a;
+    margin: auto;
+    width: 80%;
+}
+
+section.footer .footer-oh .table tr:last-child {
+    border-bottom: 1px solid #ce2b2b00;
+}
+
+section.footer td.week-day {
+    font-size: 20px;
+    color: #fff;
+    font-family: var(--font-family-rancho);
+    text-align: center;
+    line-height: 25px;
+}
+
+section.footer td.time {
+    color: #ffffffba;
+    font-size: 20px;
+    font-family: 'Poppins';
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 25px;
+}
+
+section.footer td.labor-day {
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #ffffffb0;
+    font-family: var(--font-family-rancho);
+    letter-spacing: 1px;
+}
+
+
+
+/* Third Column  */
+
+section.footer ul#quicklink-menu {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+section.footer ul#quicklink-menu li a {
+    color: #fff;
+    font-size: 20px;
+    font-family: var(--font-family-rancho);
+    line-height: 35px;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease-in-out;
+}
+
+section.footer ul#quicklink-menu li a:hover {
+    color: var(--color-deep-red);
+    transition: color 0.3s ease-in-out;
+}
+
+section.footer ul#myaccount-menu {
+    text-align: center;
+    list-style: none;
+}
+
+section.footer ul#myaccount-menu li a {
+    font-family: var(--font-family-rancho);
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 35px;
+    transition: color 0.3s ease-in-out;
+}
+
+section.footer ul#myaccount-menu li a:hover {
+    color: var(--color-deep-red);
+    transition: color 0.3s ease-in-out;
+}
+
+
+
+section.footer-middle {
+    background: #5A5A5A;
+    color: #fff;
+    padding: 10px 100px;
+}
+
+section.footer-middle p.copyright-text {
+    font-size: 15px;
+    font-family: 'Poppins';
+    margin: 0;
+}
+
+section.footer-middle ul.footer-socials {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+section.footer-middle ul.footer-socials li a {
+    font-size: 20px;
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+
+}
+
+section.footer-middle ul.footer-socials li a:hover {
+    color: var(--color-deep-red);
+    transition: color 0.3s ease-in-out;
+}
+
+section.footer-bottom p.company-text.text-center {
+    font-size: 15px;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    margin: 0;
+}
+
+section.footer-bottom {
+    background: var(--color-deep-red);
+    padding: 10px;
+}
+
+@media (max-width: 991px) {
+    section.footer-bottom {
+        padding-bottom: 100px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+    section.footer {
+        padding: 50px 30px;
+    }
+
+    section.footer-middle p.copyright-text {
+        text-align: center;
+    }
+
+    section.footer-middle ul.footer-socials {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+}

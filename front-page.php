@@ -1,48 +1,48 @@
 <?php
 
-                                            /**
-                                             * The Front Page template file
-                                             *
-                                             * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
-                                             *
-                                             * @package Miheli_Solutions
-                                             */
+/**
+ * The Front Page template file
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Miheli_Solutions
+ */
 
-                                            get_header();
-                                            $home = home_url();
+get_header();
+$home = home_url();
 
-                                            // Hero Section 
-                                            $hero_slides = get_field('hero_slides');
+// Hero Section 
+$hero_slides = get_field('hero_slides');
 
-                                            if ($hero_slides) {
-                                                $slide_count = count($hero_slides);
+if ($hero_slides) {
+    $slide_count = count($hero_slides);
 
-                                                for ($i = 1; $i <= $slide_count; $i++) {
-                                                    $slide_key = 'hero_section_' . $i;
+    for ($i = 1; $i <= $slide_count; $i++) {
+        $slide_key = 'hero_section_' . $i;
 
-                                                    if (isset($hero_slides[$slide_key])) {
-                                                        $slide = $hero_slides[$slide_key];
+        if (isset($hero_slides[$slide_key])) {
+            $slide = $hero_slides[$slide_key];
 
-                                                        ${'hero_img_' . $i} = $slide['background_image'];
-                                                        ${'hero_large_' . $i} = $slide['large_text'];
-                                                        ${'hero_small_' . $i} = $slide['small_text'];
-                                                    }
-                                                }
-                                            }
+            ${'hero_img_' . $i} = $slide['background_image'];
+            ${'hero_large_' . $i} = $slide['large_text'];
+            ${'hero_small_' . $i} = $slide['small_text'];
+        }
+    }
+}
 
-                                            // Our Category Section 
-                                            $pop_categories = get_field('popular_categories');
-                                            $cat_title = $pop_categories['section_title'];
-                                            $cat_list = $pop_categories['category_list'];
-                                            $cat_1 = $cat_list['cat_1'];
-                                            $cat_2 = $cat_list['cat_2'];
-                                            $cat_3 = $cat_list['cat_3'];
-                                            $cat_4 = $cat_list['cat_4'];
+// Our Category Section 
+$pop_categories = get_field('popular_categories');
+$cat_title = $pop_categories['section_title'];
+$cat_list = $pop_categories['category_list'];
+$cat_1 = $cat_list['cat_1'];
+$cat_2 = $cat_list['cat_2'];
+$cat_3 = $cat_list['cat_3'];
+$cat_4 = $cat_list['cat_4'];
 
-                                            // Our Story Section 
-                                            $our_story_section = get_field('our_story');
+// Our Story Section 
+$our_story_section = get_field('our_story');
 
-                                            ?>
+?>
 
 
 <!-- Hero Section  -->
@@ -328,7 +328,7 @@
 <section class="contact-form-section ">
     <div class="container-fluid g-0">
         <div class="row">
-            <div class="col-8">
+            <div class="col-md-8 col-lg-9">
                 <div class="contact-form-holder animate-on-scroll">
                     <div class="contact-form-title">
                         <h3 class="cft-title animate-on-scroll">
@@ -339,10 +339,14 @@
                     <div class="contact-form-container">
                         <?php echo do_shortcode('[contact-form-7 id="f0a2f79" title="Home Contact Form"]') ?>
                     </div>
+
+                    <div class="contact-animated-img-holder mobile-img">
+                        <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/contact-img.png" alt="">
+                    </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="contact-animated-img-holder animate-on-scroll">
+            <div class="col-md-4 col-lg-3">
+                <div class="contact-animated-img-holder desktop-img animate-on-scroll">
                     <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/contact-img.png" alt="">
                 </div>
             </div>

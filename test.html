@@ -1,175 +1,24 @@
-<div class="product-filter-buttons">
-  <button data-target="all-products" class="active">All Products</button>
-  <button data-target="best-seller">Best Seller</button>
-  <button data-target="menunisex">Men/Unisex</button>
-  <button data-target="men">Men</button>
-  <button data-target="women">Women</button>
-  <button data-target="womenunisex">Women/Unisex</button>
+
+
+<div class="container-fluid">
+<div class="row g-0">
+  <div class="col-md-6">
+     [text first-name class:first-name placeholder "First Name"]
+  </div>
+  <div class="col-md-6">
+    [text last-name class:last-name placeholder "Last Name"]
+  </div>
+ <div class="col-md-6">
+     [tel phone-number class:phone-number placeholder "Phone Number"]
+  </div>
+  <div class="col-md-6">
+    [email email-address class:email-address placeholder "E - mail"]
+  </div>
+  <div class="col-12">
+    [textarea message-form class:message-form] Message [/textarea]
+  </div>
+  <div class="col-12">
+    [submit class:contact-form-submit "Submit"]
+  </div>
 </div>
-
-
-<style>
-.main-col {
-    min-height:600px;
-}
-
-.product-shortcodes {
-  display: block; 
-  opacity: 0;    
-  height: 0;     
-  overflow: hidden;
-  transition: opacity 0.5s ease, height 0.5s ease;
-}
-
-.product-shortcodes.active {
-  opacity: 1;
-  height: auto; 
-}
-
-.product-filter-buttons {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-
-.product-filter-buttons button {
-  margin-right: 10px;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.product-filter-buttons button.active {
-  background-color: #232323 !important;
-  color: #fff !important;
-}
-
-.product-filter-buttons button.active::before {
-  transform: rotate3d(0, 0, 1, 0deg) translate3d(0, 0, 0) !important;
-  background-color: #232323 !important;
-}
-
-/* ===============================
-   ✅ MOBILE SLIDER STYLE (HORIZONTAL SCROLL)
-   =============================== */
-@media (max-width: 768px) {
-  .product-filter-buttons {
-    justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-    padding: 10px 5px;
-  }
-
-  .product-filter-buttons::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .product-filter-buttons::-webkit-scrollbar-thumb {
-    background-color: #aaa;
-    border-radius: 4px;
-  }
-
-  .product-filter-buttons button {
-    display: inline-block;
-    white-space: nowrap;
-    flex: 0 0 auto;
-    margin-right: 8px;
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-filter-buttons button {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-}
-</style>
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const buttons = document.querySelectorAll(".product-filter-buttons button");
-  const containers = document.querySelectorAll(".product-shortcodes");
-
-  function activateTab(targetClass, pushState = true) {
-    const targetContainer = document.querySelector("." + targetClass);
-    if (!targetContainer) return;
-
-    // Hide all
-    containers.forEach(c => c.classList.remove("active"));
-    targetContainer.classList.add("active");
-
-    // Update active button
-    buttons.forEach(b => b.classList.remove("active"));
-    document.querySelector(`.product-filter-buttons button[data-target="${targetClass}"]`).classList.add("active");
-
-    // Update URL (so pagination knows filter)
-if (pushState) {
-  const url = new URL(window.location);
-  url.searchParams.set("filter", targetClass);
-  url.searchParams.delete("product-page"); // remove page
-  window.history.pushState({}, "", url);
-
-  // If the page is not already page 1, reload to page 1
-  if (urlParams.get('product-page') && urlParams.get('product-page') !== '1') {
-    window.location.href = url.toString(); // reload page 1 for this filter
-  }
-}
-
-
-    // Fix pagination links so they keep the filter param
-    const paginationLinks = targetContainer.querySelectorAll(".woocommerce-pagination a");
-    paginationLinks.forEach(link => {
-      const url = new URL(link.href);
-      url.searchParams.set("filter", targetClass);
-      link.href = url.toString();
-    });
-  }
-
-  // Load filter from URL if exists
-  const urlParams = new URLSearchParams(window.location.search);
-  const filter = urlParams.get("filter") || "all-products";
-  activateTab(filter, false);
-
-  // Button clicks
-  buttons.forEach(btn => {
-    btn.addEventListener("click", function() {
-      const targetClass = this.getAttribute("data-target");
-      activateTab(targetClass);
-    });
-  });
-});
-</script>
-
-
-<div class="product-shortcodes all-products" data-category="">
-  [products per_page="12" columns="4" paginate="true"]
-</div>
-
-<div class="product-shortcodes best-seller" data-category="best_seller">
-  [products category="best_seller" per_page="12" columns="4" paginate="true"]
-</div>
-
-<div class="product-shortcodes menunisex" data-category="menunisex">
-  [products category="menunisex" per_page="12" columns="4" paginate="true"]
-</div>
-
-<div class="product-shortcodes men" data-category="men">
-  [products category="men" per_page="12" columns="4" paginate="true"]
-</div>
-
-<div class="product-shortcodes women" data-category="women">
-  [products category="women" per_page="12" columns="4" paginate="true"]
-</div>
-
-<div class="product-shortcodes womenunisex" data-category="womenunisex">
-  [products category="womenunisex" per_page="12" columns="4" paginate="true"]
 </div>

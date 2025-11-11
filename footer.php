@@ -13,9 +13,9 @@
 ?>
 
 <section class="footer">
-    <div class="conaitner-fluid g-0">
-        <div class="row">
-            <div class="col-md-3">
+    <div class="container-fluid g-0">
+        <div class="row g-0">
+            <div class="col-md-6 col-lg-3">
                 <div class="footer-contianer">
                     <div class="footer-logo-holder">
                         <?php the_custom_logo(); ?>
@@ -24,20 +24,20 @@
                         <ul class="fi-ul">
                             <li class="fi-li">
                                 <div class="fi-li-item">
-                                    <div class="fi-icon-wrapper"></div>
-                                    <div class="fi-desc"></div>
+                                    <div class="fi-icon-wrapper"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="fi-desc">436 Second St W, Cornwall, ON K6J 1H1, Canada</div>
                                 </div>
                             </li>
                             <li class="fi-li">
                                 <div class="fi-li-item">
-                                    <div class="fi-icon-wrapper"></div>
-                                    <div class="fi-desc"></div>
+                                    <div class="fi-icon-wrapper"><i class="fa-solid fa-at"></i></div>
+                                    <div class="fi-desc">info@cornwallbbq.ca</div>
                                 </div>
                             </li>
                             <li class="fi-li">
                                 <div class="fi-li-item">
-                                    <div class="fi-icon-wrapper"></div>
-                                    <div class="fi-desc"></div>
+                                    <div class="fi-icon-wrapper"><i class="fa-solid fa-phone"></i></div>
+                                    <div class="fi-desc">+1 613-933-1000</div>
                                 </div>
                             </li>
 
@@ -46,14 +46,116 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
-
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-container">
+                    <div class="footer-section-title">
+                        Opening Hours
+                    </div>
+                    <div class="footer-oh">
+                        <table class="table">
+                            <tr>
+                                <td class="week-day">Monday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Tuesday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Wednesday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Thursday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Friday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Saturday </td>
+                                <td class="time">10:30 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="week-day">Sunday </td>
+                                <td class="time">9 AM–8 PM</td>
+                            </tr>
+                            <tr>
+                                <td class="labor-day" colspan="2">(Labor Day) Hours might differ </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-container">
+                    <div class="footer-section-title">
+                        Quick Links
+                    </div>
+                    <nav class="footer-ql" id="quick-navigation">
 
+                        <?php
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'menu-2',
+                                'menu_id' => 'quicklink-menu',
+                                'menu_class' => 'quicklink-menu',
+                            )
+                        );
+                        ?>
+
+                    </nav>
+                </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
+                <div class="footer-container">
+                    <div class="footer-section-title">
+                        My Account
+                    </div>
+                    <nav class="footer-ql" id="quick-navigation">
 
+                        <?php
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'menu-3',
+                                'menu_id' => 'myaccount-menu',
+                                'menu_class' => 'myaccount-menu',
+                            )
+                        );
+                        ?>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-middle">
+    <div class="container-fluid g-0">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <p class="copyright-text"> © Copyright 2025 Cornwall B.B.Q , All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <ul class="footer-socials">
+                    <li class="list-item"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li class="list-item"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li class="list-item"><a href="#"><i class="fa-brands fa-snapchat"></i></a></li>
+                    <li class="list-item"><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-bottom">
+    <div class="container-fluid g-0">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <p class="company-text text-center"> Designed & Developed by Miheli Tech inc</p>
             </div>
         </div>
     </div>
