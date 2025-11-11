@@ -99,12 +99,15 @@
 						</div>
 
 						<!-- CART: link with count (works when WooCommerce active) -->
-						<a class="icon-btn site-cart" href="<?php echo esc_url($cart_url); ?>" aria-label="View cart">
-							<i class="fa-solid fa-cart-shopping"></i>
-							<?php if ($cart_count && intval($cart_count) > 0) : ?>
-								<span class="cart-count" aria-hidden="true"><?php echo intval($cart_count); ?></span>
-							<?php endif; ?>
+						<?php
+						$header_count = intval($cart_count);
+						?>
+						<a class="icon-btn site-cart open-cart-drawer" href="<?php echo esc_url($cart_url); ?>" aria-label="<?php esc_attr_e('Open cart', 'miheli-solutions'); ?>" data-open-drawer="1">
+							<i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+							<span class="cart-count <?php echo $header_count ? 'has-count' : ''; ?>" data-count="<?php echo $header_count; ?>" aria-hidden="true"><?php echo $header_count; ?></span>
 						</a>
+
+
 
 						<!-- ACCOUNT: My Account or Login -->
 						<a class="icon-btn site-account" href="<?php echo esc_url($account_url); ?>" aria-label="My account">
@@ -128,15 +131,14 @@
 					<span class="mobile-nav-label">Search</span>
 				</button>
 
-				<a href="<?php echo esc_url($cart_url); ?>" class="mobile-nav-item mobile-cart" aria-label="Cart">
+				<a href="<?php echo esc_url($cart_url); ?>" class="mobile-nav-item mobile-cart open-cart-drawer" aria-label="Cart" data-open-drawer="1">
 					<div class="mobile-cart-icon">
 						<i class="fa-solid fa-cart-shopping"></i>
-						<?php if ($cart_count && intval($cart_count) > 0) : ?>
-							<span class="mobile-cart-count" aria-hidden="true"><?php echo intval($cart_count); ?></span>
-						<?php endif; ?>
+						<span class="mobile-cart-count <?php echo $header_count ? 'has-count' : ''; ?>" data-count="<?php echo $header_count; ?>" aria-hidden="true"><?php echo $header_count; ?></span>
 					</div>
 					<span class="mobile-nav-label">Cart</span>
 				</a>
+
 
 				<a href="<?php echo esc_url($account_url); ?>" class="mobile-nav-item" aria-label="Account">
 					<i class="fa-regular fa-user"></i>

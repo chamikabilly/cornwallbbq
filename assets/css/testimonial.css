@@ -1,0 +1,224 @@
+.testimonail-section {
+    background-color: #212320;
+    padding-bottom: 50px;
+}
+
+/* Title area */
+.testimonail-section .ts-title-holder {
+    position: relative;
+}
+
+.testimonail-section .ts-title-holder .ts-title {
+    font-size: 50px;
+    font-family: var(--font-family-rancho);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-top: 50px;
+    color: #fff;
+    transition: color 300ms cubic-bezier(.2, .9, .2, 1), transform 300ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.testimonail-section .ts-title-holder .ts-title img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: -1;
+    opacity: 0.5;
+    transition: transform 400ms cubic-bezier(.2, .9, .2, 1), opacity 300ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.testimonail-section .ts-title-holder .ts-sub-title {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    font-family: var(--font-family-poppins);
+    z-index: 2;
+    position: relative;
+    transition: color 300ms cubic-bezier(.2, .9, .2, 1), opacity 300ms;
+}
+
+/* Slider container */
+.testimonail-section .testimonial-slider-holder {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 50px 0;
+}
+
+/* Pagination positioning */
+.testimonail-section .testimonials-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%;
+    text-align: center;
+}
+
+/* Basic slide look (base state) */
+.testimonail-section .swiper-slide {
+    position: relative;
+    /* for pseudo-element */
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0.22), transparent);
+    padding: 20px 30px 30px;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.68);
+    cursor: grab;
+    transition:
+        transform 300ms cubic-bezier(.2, .9, .2, 1),
+        border-color 300ms cubic-bezier(.2, .9, .2, 1),
+        box-shadow 300ms cubic-bezier(.2, .9, .2, 1),
+        background 400ms cubic-bezier(.2, .9, .2, 1),
+        opacity 300ms cubic-bezier(.2, .9, .2, 1);
+    will-change: transform, box-shadow;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* overlay that animates left → right (keeps content readable above it) */
+.testimonail-section .swiper-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(201, 51, 51, 0.12) 0%, rgb(235 221 204 / 6%) 35%, rgba(125, 37, 37, 0.06) 55%, #dc354596 100%);
+    background-image: linear-gradient(90deg, rgba(201, 51, 51, 0.12) 0%, rgba(235, 221, 204, 0.06) 35%, rgba(125, 37, 37, 0.06) 55%, rgba(220, 53, 69, 0.59) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    transition: background-position 700ms cubic-bezier(.2, .9, .2, 1), opacity 300ms cubic-bezier(.2, .9, .2, 1);
+    opacity: 1;
+    mix-blend-mode: overlay;
+    border-radius: inherit;
+}
+
+/* ensure content sits above overlay */
+.testimonail-section .ts-wrp {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover / active state for slide: lift, border color, shadow, and gradient sweep */
+.testimonail-section .swiper-slide:hover,
+.testimonail-section .swiper-slide:focus {
+    transform: translateY(-8px);
+    border-color: rgb(137 49 55);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 6px 40px rgba(221, 63, 63, 0.06);
+}
+
+/* move gradient from left → right on hover/focus */
+.testimonail-section .swiper-slide:hover::before,
+.testimonail-section .swiper-slide:focus::before {
+    background-position: 100% 50%;
+}
+
+/* subtle focus style for keyboard users (clearer outline removed intentionally) */
+.testimonail-section .swiper-slide:focus {
+    outline: none;
+    transform: translateY(-6px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+}
+
+/* top area inside slide */
+.testimonail-section .ts-wrp .ts-top {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+/* avatar */
+.testimonail-section .ts-wrp .ts-avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: transform 320ms cubic-bezier(.2, .9, .2, 1), box-shadow 300ms;
+}
+
+/* if you want small avatar hover scale */
+.testimonail-section .swiper-slide:hover .ts-wrp .ts-avatar {
+    transform: translateZ(0) scale(1.03);
+}
+
+/* top content (name + stars) */
+.testimonail-section .ts-wrp .ts-top-content {
+    color: #fff;
+    transition: color 300ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.testimonail-section .ts-wrp .ts-top-content h6 {
+    font-size: 25px;
+    font-family: 'Rancho';
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin: 0;
+    transition: color 300ms cubic-bezier(.2, .9, .2, 1), transform 300ms;
+}
+
+/* testimonial text content */
+.testimonail-section .ts-wrp .ts-content {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 200;
+    line-height: 1.5;
+    transition: color 300ms cubic-bezier(.2, .9, .2, 1), opacity 300ms;
+}
+
+/* pagination bullets — unified smooth transitions */
+.testimonail-section .testimonials-pagination .swiper-pagination-bullet {
+    background: rgba(125, 37, 37, 0.45);
+    width: 14px;
+    height: 14px;
+    transition: transform 300ms cubic-bezier(.2, .9, .2, 1), background 300ms cubic-bezier(.2, .9, .2, 1), box-shadow 300ms;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 6px;
+}
+
+.testimonail-section .testimonials-pagination .swiper-pagination-bullet:hover {
+    transform: scale(1.08);
+    background: rgba(230, 67, 67, 0.92);
+}
+
+.testimonail-section .testimonials-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: linear-gradient(90deg, #dd4b4b, #a23a3a);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* small responsive title sizes */
+@media (max-width: 998px) {
+    .testimonail-section .ts-title-holder .ts-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonail-section .ts-title-holder .ts-title {
+        font-size: 35px;
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    .testimonail-section .swiper-slide,
+    .testimonail-section .swiper-slide::before,
+    .testimonail-section .swiper-slide:hover,
+    .testimonail-section .ts-title-holder .ts-title img,
+    .testimonail-section .ts-wrp .ts-avatar {
+        transition: none !important;
+        transform: none !important;
+        background-position: 0% 50% !important;
+    }
+}

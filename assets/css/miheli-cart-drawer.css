@@ -1,0 +1,429 @@
+/* ---------------------------
+  MIEHLI BBQ CART - Modern Drawer
+   - slide-in drawer (desktop)
+   - center modal (mobile)
+   - add-to-cart fly animation + count bump
+   - item add/remove animations
+---------------------------*/
+
+/* Overlay */
+.miheli-cart-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 260ms ease;
+}
+
+.miheli-cart-drawer-overlay.miheli-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.miheli-flames img {
+    max-width: 70px;
+}
+
+/* Drawer container - responsive */
+.miheli-cart-drawer {
+    position: fixed;
+    z-index: 99999;
+    top: 8vh;
+    right: 20px;
+    width: 380px;
+    max-width: calc(100% - 40px);
+    height: calc(84vh);
+    transform: translateX(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 420ms cubic-bezier(.2, .9, .25, 1), opacity 260ms ease;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.miheli-cart-drawer.miheli-open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Inner (card) - glassy, warm BBQ look */
+.miheli-cart-drawer-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0f0a08 0%, #2b1a12 100%);
+    border-radius: 14px;
+    padding: 18px;
+    color: #fff;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    z-index: 99999;
+}
+
+/* Close button */
+.miheli-drawer-close {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 160ms ease, background 160ms;
+}
+
+.miheli-drawer-close:hover {
+    transform: rotate(10deg) scale(1.04);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* BBQ header */
+.miheli-bbq-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.miheli-cart-title {
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* cart content area */
+.miheli-mini-cart-content {
+    flex: 1;
+    overflow: auto;
+    padding-right: 6px;
+    margin-top: 6px;
+}
+
+/* Cart list & item */
+.miheli-mini-cart-list {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.miheli-cart-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 220ms cubic-bezier(.2, .9, .2, 1), background 240ms, box-shadow 240ms;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+}
+
+.miheli-cart-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* thumbnail */
+.miheli-item-thumb img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    display: block;
+}
+
+/* title and meta */
+.miheli-item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.miheli-item-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.miheli-item-qty-price {
+    font-size: 13px;
+    color: #d7d7d7;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* qty controls */
+.qty-controls {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.qty-controls button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 160ms, transform 120ms;
+}
+
+.qty-controls button:active {
+    transform: scale(.96);
+}
+
+/* remove */
+.miheli-remove-cart-item {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    opacity: .8;
+    cursor: pointer;
+}
+
+/* footer */
+.miheli-mini-cart-footer {
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.miheli-mini-cart-footer .subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.miheli-cart-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: stretch;
+}
+
+.miheli-cart-actions .button {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.miheli-cart-actions .button.checkout {
+    background: linear-gradient(90deg, #ff7a1a, #ff5a00);
+    color: #fff;
+}
+
+.miheli-cart-actions .button.view-cart {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+}
+
+/* cart handle & open button (floating) */
+.miheli-drawer-handle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100000;
+    pointer-events: none;
+}
+
+.miheli-cart-open-btn {
+    pointer-events: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #ff7a1a, #ff5a00);
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+    box-shadow: 0 12px 40px rgba(255, 122, 26, 0.12);
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 220ms ease;
+}
+
+.miheli-cart-open-btn:active {
+    transform: scale(.98);
+}
+
+/* count badge with bump animation */
+.miheli-mini-count {
+    background: #111;
+    border-radius: 999px;
+    padding: 6px 9px;
+    color: #fff;
+    font-weight: 800;
+    display: inline-block;
+    min-width: 28px;
+    text-align: center;
+    transition: transform 260ms cubic-bezier(.2, .9, .25, 1), box-shadow 220ms;
+}
+
+.miheli-mini-count.bump {
+    animation: miheli-bump 420ms cubic-bezier(.2, .9, .25, 1);
+}
+
+.miheli-mini-cart-empty {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.miheli-mini-cart-empty img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+@keyframes miheli-bump {
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.28);
+    }
+
+    65% {
+        transform: scale(.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* flying thumbnail (added element) */
+.flying-thumb {
+    position: fixed;
+    z-index: 110000;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: transform 700ms cubic-bezier(.15, .9, .28, 1), opacity 400ms ease;
+    will-change: transform, opacity;
+}
+
+/* Add / remove animations on cart items */
+.miheli-cart-item.added {
+    animation: miheli-item-add 420ms cubic-bezier(.2, .9, .25, 1);
+}
+
+@keyframes miheli-item-add {
+    0% {
+        transform: translateY(-12px) scale(.98);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateY(0) scale(1.02);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.miheli-cart-item.removing {
+    animation: miheli-item-remove 360ms ease forwards;
+}
+
+@keyframes miheli-item-remove {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.98) translateX(12px);
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* empty state */
+.miheli-cart-empty {
+    text-align: center;
+    color: #e8e2df;
+    padding: 36px 12px;
+    font-weight: 600;
+}
+
+.miheli-cart-empty p {
+    margin: 8px 0 0;
+    color: #d6cfcf;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Variants modal reuse (small tweaks for modern look) */
+.variants-modal-content {
+    background: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    max-width: 640px;
+    width: 94%;
+    color: #222;
+}
+
+.close-modal {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Responsive: mobile centers drawer as modal */
+@media (max-width: 880px) {
+    .miheli-cart-drawer {
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, 140%) scale(.98);
+        top: auto;
+        bottom: 8vh;
+        width: 92%;
+        max-width: 760px;
+    }
+
+    .miheli-cart-drawer.miheli-open {
+        transform: translate(-50%, 0);
+    }
+
+    /* keep header compact */
+}

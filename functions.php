@@ -197,7 +197,7 @@ function miheli_solutions_scripts()
 	wp_enqueue_script(
 		'miheli-solutions-navigation',
 		get_template_directory_uri() . '/assets/js/navigation.js',
-		array('jquery'), // Add jQuery as dependency
+		array('meheli-swiper-js'), // Add jQuery as dependency
 		_S_VERSION,
 		true
 	);
@@ -210,11 +210,61 @@ function miheli_solutions_scripts()
 		true
 	);
 
+
+
+	wp_enqueue_script(
+		'miheli-cart-drawer-js',
+		get_template_directory_uri() . '/assets/js/miheli-cart-drawer.js',
+		array('jquery'),
+		'1.0',
+		true
+	);
+
+	// localize drawer data
+	$miheli_cart_data = array(
+		'ajax_url' => admin_url('admin-ajax.php'),
+		'nonce'    => wp_create_nonce('miheli_cart_nonce'),
+	);
+	wp_localize_script('miheli-cart-drawer-js', 'miheliCartData', $miheli_cart_data);
+
+
+	wp_enqueue_script(
+		'miheli-solutions-product-container',
+		get_template_directory_uri() . '/assets/js/product-container.js',
+		array('jquery'), // Add jQuery as dependency
+		_S_VERSION,
+		true
+	);
+
+	// localize product data
+	$admin_url_data = array(
+		'admin_url' => admin_url(),
+		'ajax_url'  => admin_url('admin-ajax.php'), // If you need the AJAX URL
+		'nonce'    => wp_create_nonce('products_nonce')
+	);
+	wp_localize_script('miheli-solutions-product-container', 'wpAdminData', $admin_url_data);
+
+
+	wp_enqueue_script(
+		'miheli-solutions-variant',
+		get_template_directory_uri() . '/assets/js/variant.js',
+		array('jquery'), // Add jQuery as dependency
+		time(),
+		true
+	);
+
+	// localize variants data
+	wp_localize_script('miheli-solutions-variant', 'miheli_ajax', array(
+		'ajax_url' => admin_url('admin-ajax.php'),
+		'nonce'    => wp_create_nonce('miheli_variant_nonce')
+	));
+
+
 	wp_enqueue_script(
 		'miheli-main-js',
 		get_template_directory_uri() . '/assets/js/main.js',
 		array('jquery', 'meheli-bootstrap-5-js'), // Depend on jQuery and Bootstrap
-		'1.0.0',
+		_S_VERSION,
 		true
 	);
 
@@ -258,6 +308,23 @@ require get_template_directory() . '/inc/loading.php';
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * AJAX requests file.
+ */
+require get_template_directory() . '/inc/ajax.php';
+
+/**
+ * Drawer  file.
+ */
+require_once  get_template_directory() . '/inc/drawer.php';
+
+/**
+ * Variant php file.
+ */
+require_once  get_template_directory() . '/inc/variant.php';
+
+
 
 /**
  * Allow svg upload.
