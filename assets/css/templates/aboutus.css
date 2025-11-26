@@ -1,0 +1,253 @@
+section.section-about-us {
+    position: relative;
+    padding: 70px 0 130px;
+}
+
+section.section-about-us .container {
+    position: relative;
+}
+
+section.section-about-us .about-bg {
+    background: #212320;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    z-index: 0;
+    top: 10%;
+    right: 0;
+    border-radius: 50px 50px 0px 50px;
+}
+
+section.section-about-us img.about-bg-img {
+    opacity: 0.2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    pointer-events: none;
+}
+
+
+section.section-about-us img.about-side-img {
+    position: relative;
+    border-radius: 0 50px 50px 50px;
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 5px solid #ffffff21;
+    float: inline-end;
+    box-shadow: 0 0 3px #0000007d;
+}
+
+section.section-about-us img.about-side-img {
+    position: relative;
+    border-radius: 0 50px 50px 50px;
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 5px solid #ffffff21;
+    float: inline-end;
+    box-shadow: 0 0 3px #0000007d;
+    max-height: 600px;
+}
+
+section.section-about-us h3.aus-title {
+    position: relative;
+    font-size: 50px;
+    font-family: var(--font-family-rancho);
+    color: #fff;
+    text-transform: capitalize;
+    text-align: left;
+    line-height: 40px;
+    width: fit-content;
+    margin: 50px 0px 30px;
+}
+
+section.section-about-us h3.aus-title img {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.5;
+    top: -42px;
+    right: -46px;
+}
+
+section.section-about-us .aus-text p {
+    color: #fff;
+}
+
+section.section-about-us .sau-content-holder {
+    padding: 0 50px;
+}
+
+@media (max-width:1200px) {
+    section.section-about-us .sau-content-holder {
+        padding: 0 20px;
+    }
+}
+
+
+@media (max-width:992px) {
+    section.section-about-us {
+        padding: 0px 0 130px;
+    }
+
+    section.section-about-us .about-bg {
+        width: 100%;
+    }
+
+    section.section-about-us img.about-side-img {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    section.section-about-us .container {
+        width: 90%;
+    }
+
+    section.section-about-us h3.aus-title {
+        margin: 0px 0px 30px;
+    }
+
+    section.section-about-us {
+        padding: 50px 0 130px;
+    }
+
+    section.section-about-us .about-bg {
+        top: 3%;
+    }
+
+    section.section-about-us img.about-bg-img {
+        max-width: 260px;
+    }
+}
+
+
+/* Our Services Section CSS  */
+
+section.our-services-section {
+    margin: 30px 0 100px;
+}
+
+.our-services-section h3.oss-title {
+    font-family: var(--font-family-rancho);
+    font-size: 50px;
+    color: #fff;
+    position: relative;
+    width: fit-content;
+    margin: auto;
+}
+
+.our-services-section h3.oss-title img {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.4;
+    top: -20px;
+    right: 5px;
+}
+
+.our-services-section h6.oss-sub-title {
+    font-size: 15px;
+    color: #fff;
+    font-weight: normal;
+    text-align: center;
+    font-family: var(--font-family-poppins);
+    z-index: 2;
+    position: relative;
+    font-weight: 200;
+    margin-bottom: 40px;
+}
+
+.our-services-section .inner-content {
+    text-align: center;
+    position: relative;
+    padding: 20px 20px 70px;
+    border: 2px solid;
+    border-radius: 30px;
+    box-shadow: 0 0 10px #00000061;
+}
+
+.our-services-section .oss-content-holder {
+    background: #ffffff59;
+    border-radius: 30px 30px 30px 0px;
+    padding: 5px 20px 20px;
+    box-shadow: 0 0 5px #0000002e;
+    margin: 0;
+    height: 100%;
+}
+
+.our-services-section .inner-content img {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    opacity: 0.6;
+}
+
+.our-services-section .inner-content h6 {
+    font-size: 30px;
+    font-family: 'Rancho';
+}
+
+.our-services-section .inner-content p {
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0;
+    font-family: var(--font-family-poppins);
+    line-height: 20px;
+}
+
+
+.our-services-section .inner-content.bg-dark-color {
+    background-color: #212320;
+    border-color: #ffffff7e;
+}
+
+.our-services-section .inner-content.bg-dark-color p,
+.our-services-section .inner-content.bg-dark-color h6 {
+    color: #fff;
+}
+
+
+
+.our-services-section .inner-content.bg-light-color {
+    background-color: #FFD6A1;
+    border-color: #D4A331;
+}
+
+.our-services-section .inner-content.bg-light-color p,
+.our-services-section .inner-content.bg-light-color h6 {
+    color: #212320;
+}
+
+
+.our-services-section .oss-img-holder {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.our-services-section .oss-img-holder img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 100px 100px 100px;
+    border: 2px solid #ffffff57;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 10px black;
+}
+
+@media (max-width:992px) {
+    .our-services-section .oss-img-holder {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    section.our-services-section {
+        padding: 0 30px;
+    }
+}

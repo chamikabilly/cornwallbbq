@@ -9,6 +9,13 @@
 @import url(testimonial.css);
 @import url(contact-form.css);
 @import url(footer.css);
+@import url(page-title.css);
+@import url(blog.css);
+
+
+
+@import url(templates/aboutus.css);
+
 
 
 
@@ -20,6 +27,10 @@
 a {
     text-decoration: none !important;
     color: transparent;
+}
+
+body {
+    background-color: #313131 !important;
 }
 
 

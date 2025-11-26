@@ -8,7 +8,7 @@
  * @package Miheli_Solutions
  */
 
-if (! defined('_S_VERSION')) {
+if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
 	define('_S_VERSION', '1.0.0');
 }
@@ -23,29 +23,29 @@ if (! defined('_S_VERSION')) {
 function miheli_solutions_setup()
 {
 	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Miheli Solutions, use a find and replace
-		* to change 'miheli-solutions' to the name of your theme in all the template files.
-		*/
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on Miheli Solutions, use a find and replace
+	 * to change 'miheli-solutions' to the name of your theme in all the template files.
+	 */
 	load_theme_textdomain('miheli-solutions', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support('automatic-feed-links');
 
 	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
 	add_theme_support('title-tag');
 
 	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
 	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
@@ -58,9 +58,9 @@ function miheli_solutions_setup()
 	);
 
 	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
 	add_theme_support(
 		'html5',
 		array(
@@ -97,9 +97,9 @@ function miheli_solutions_setup()
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
+			'height' => 250,
+			'width' => 250,
+			'flex-width' => true,
 			'flex-height' => true,
 		)
 	);
@@ -128,13 +128,13 @@ function miheli_solutions_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'miheli-solutions'),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'miheli-solutions'),
+			'name' => esc_html__('Sidebar', 'miheli-solutions'),
+			'id' => 'sidebar-1',
+			'description' => esc_html__('Add widgets here.', 'miheli-solutions'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'after_widget' => '</section>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
 		)
 	);
 }
@@ -223,7 +223,7 @@ function miheli_solutions_scripts()
 	// localize drawer data
 	$miheli_cart_data = array(
 		'ajax_url' => admin_url('admin-ajax.php'),
-		'nonce'    => wp_create_nonce('miheli_cart_nonce'),
+		'nonce' => wp_create_nonce('miheli_cart_nonce'),
 	);
 	wp_localize_script('miheli-cart-drawer-js', 'miheliCartData', $miheli_cart_data);
 
@@ -239,8 +239,8 @@ function miheli_solutions_scripts()
 	// localize product data
 	$admin_url_data = array(
 		'admin_url' => admin_url(),
-		'ajax_url'  => admin_url('admin-ajax.php'), // If you need the AJAX URL
-		'nonce'    => wp_create_nonce('products_nonce')
+		'ajax_url' => admin_url('admin-ajax.php'), // If you need the AJAX URL
+		'nonce' => wp_create_nonce('products_nonce')
 	);
 	wp_localize_script('miheli-solutions-product-container', 'wpAdminData', $admin_url_data);
 
@@ -256,7 +256,7 @@ function miheli_solutions_scripts()
 	// localize variants data
 	wp_localize_script('miheli-solutions-variant', 'miheli_ajax', array(
 		'ajax_url' => admin_url('admin-ajax.php'),
-		'nonce'    => wp_create_nonce('miheli_variant_nonce')
+		'nonce' => wp_create_nonce('miheli_variant_nonce')
 	));
 
 
@@ -317,12 +317,12 @@ require get_template_directory() . '/inc/ajax.php';
 /**
  * Drawer  file.
  */
-require_once  get_template_directory() . '/inc/drawer.php';
+require_once get_template_directory() . '/inc/drawer.php';
 
 /**
  * Variant php file.
  */
-require_once  get_template_directory() . '/inc/variant.php';
+require_once get_template_directory() . '/inc/variant.php';
 
 
 
@@ -345,4 +345,30 @@ function inline_svg($filepath)
 		'g' => ['fill' => [], 'stroke' => []],
 	]);
 	return $svg;
+}
+// custom breadcrumbs
+function custom_breadcrumbs()
+{
+	// Home link
+	echo '<div class="breadcrumbs">';
+	echo '<a href="' . home_url() . '">Home</a>';
+
+	// If it's a page and not the homepage
+	if (is_page() && !is_front_page()) {
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+
+		// Get parent pages
+		$ancestors = get_post_ancestors(get_the_ID());
+		if ($ancestors) {
+			$ancestors = array_reverse($ancestors);
+			foreach ($ancestors as $ancestor) {
+				echo '<a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a> <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+			}
+		}
+
+		// Current page
+		echo '<span class="current">' . get_the_title() . '</span>';
+	}
+
+	echo '</div>';
 }

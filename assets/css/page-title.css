@@ -1,0 +1,123 @@
+section.title-holder {
+    padding: 0px 60px 0 100px;
+}
+
+section.title-holder .container {
+    background: linear-gradient(86deg, #664E4E, #939393);
+    border-radius: 50px 50px 30px 30px;
+    height: 300px;
+    margin-top: -145px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff85;
+    max-width: 1250px;
+    box-shadow: 0 0 7px 0px #00000082;
+
+}
+
+section.title-holder h1.header-page-title {
+    padding-top: 80px;
+    font-size: 70px;
+    font-family: 'Rancho';
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+section.title-holder .breadcrumbs {
+    margin: 0 auto;
+    text-align: center;
+}
+
+section.title-holder .breadcrumbs a {
+    color: #fff;
+    font-size: 15px;
+}
+
+section.title-holder .breadcrumbs .separator {
+    color: #fff;
+    font-size: 10px;
+    padding: 0 3px;
+}
+
+section.title-holder .breadcrumbs .current {
+    color: #FFAC42;
+    font-size: 15px;
+}
+
+
+@media (min-width:1201px) and (max-width:1400px) {
+    section.title-holder .container {
+        max-width: 1070px;
+    }
+}
+
+@media (max-width:1200px) {
+    section.title-holder .container {
+        height: 260px;
+        margin-top: -127px;
+        max-width: 900px;
+    }
+}
+
+
+@media (max-width:991px) {
+    section.title-holder .container {
+        height: 157px;
+        margin-top: 20px;
+        max-width: 720px;
+        border-radius: 30px;
+    }
+
+    section.title-holder h1.header-page-title {
+        padding-top: 0;
+        font-size: 60px;
+    }
+
+    section.title-holder {
+        padding: 0px;
+    }
+}
+
+
+@media (max-width:768px) {
+    section.title-holder .container {
+        max-width: 540px;
+    }
+
+    section.title-holder h1.header-page-title {
+        font-size: 50px;
+        line-height: 40px;
+    }
+}
+
+
+@media (max-width:576px) {
+    section.title-holder .container {
+        max-width: unset;
+    }
+
+    section.title-holder {
+        padding: 0px 20px;
+    }
+
+
+}
+
+
+@media (max-width:400px) {
+    section.title-holder h1.header-page-title {
+        font-size: 40px;
+        line-height: 30px;
+    }
+
+    section.title-holder .breadcrumbs a,
+    section.title-holder .breadcrumbs .current {
+        font-size: 13px;
+    }
+
+    section.title-holder .breadcrumbs .separator {
+        font-size: 8px;
+    }
+}

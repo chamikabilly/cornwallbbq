@@ -1,12 +1,13 @@
 <?php
 function add_advanced_loading_screen()
 {
-?>
+    ?>
     <div id="loading-screen">
         <div class="loading-container">
             <div class="logo">
                 <!-- Add your logo here -->
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.jpg" alt="Loading...">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.jpg" alt="Loading..."
+                    loading="lazy">
             </div>
             <div class="progress-bar">
                 <div class="progress"></div>
@@ -64,7 +65,7 @@ function add_advanced_loading_screen()
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const progressBar = document.querySelector('.progress');
             const loadingScreen = document.getElementById('loading-screen');
 
@@ -79,7 +80,7 @@ function add_advanced_loading_screen()
                 progressBar.style.width = progress + '%';
             }, 200);
 
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 progressBar.style.width = '100%';
                 setTimeout(() => {
                     document.body.classList.add('loaded');
@@ -98,6 +99,6 @@ function add_advanced_loading_screen()
             }, 4000);
         });
     </script>
-<?php
+    <?php
 }
 add_action('wp_body_open', 'add_advanced_loading_screen');

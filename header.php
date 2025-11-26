@@ -25,7 +25,8 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'miheli-solutions'); ?></a>
+		<a class="skip-link screen-reader-text"
+			href="#primary"><?php esc_html_e('Skip to content', 'miheli-solutions'); ?></a>
 
 		<?php
 		// Define cart variables at the top so they're available everywhere
@@ -68,8 +69,8 @@
 						wp_nav_menu(
 							array(
 								'theme_location' => 'menu-1',
-								'menu_id'        => 'primary-menu',
-								'menu_class'     => 'primary-menu',
+								'menu_id' => 'primary-menu',
+								'menu_class' => 'primary-menu',
 							)
 						);
 						?>
@@ -77,7 +78,8 @@
 
 					<div class="site-cart-account">
 						<!-- SEARCH: toggle button + inline/hidden form -->
-						<button type="button" class="icon-btn search-toggle" aria-expanded="false" aria-controls="header-search" id="search-toggle">
+						<button type="button" class="icon-btn search-toggle" aria-expanded="false"
+							aria-controls="header-search" id="search-toggle">
 							<i class="fa-solid fa-magnifying-glass"></i>
 							<span class="screen-reader-text">Search</span>
 						</button>
@@ -102,15 +104,19 @@
 						<?php
 						$header_count = intval($cart_count);
 						?>
-						<a class="icon-btn site-cart open-cart-drawer" href="<?php echo esc_url($cart_url); ?>" aria-label="<?php esc_attr_e('Open cart', 'miheli-solutions'); ?>" data-open-drawer="1">
+						<a class="icon-btn site-cart open-cart-drawer" href="<?php echo esc_url($cart_url); ?>"
+							aria-label="<?php esc_attr_e('Open cart', 'miheli-solutions'); ?>" data-open-drawer="1">
 							<i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-							<span class="cart-count <?php echo $header_count ? 'has-count' : ''; ?>" data-count="<?php echo $header_count; ?>" aria-hidden="true"><?php echo $header_count; ?></span>
+							<span class="cart-count <?php echo $header_count ? 'has-count' : ''; ?>"
+								data-count="<?php echo $header_count; ?>"
+								aria-hidden="true"><?php echo $header_count; ?></span>
 						</a>
 
 
 
 						<!-- ACCOUNT: My Account or Login -->
-						<a class="icon-btn site-account" href="<?php echo esc_url($account_url); ?>" aria-label="My account">
+						<a class="icon-btn site-account" href="<?php echo esc_url($account_url); ?>"
+							aria-label="My account">
 							<i class="fa-regular fa-user" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -126,15 +132,19 @@
 					<span class="mobile-nav-label">Home</span>
 				</a>
 
-				<button class="mobile-nav-item mobile-search-toggle" aria-label="Search">
+				<button class="mobile-nav-item mobile-search-toggle" aria-expanded="false"
+					aria-controls="header-search">
 					<i class="fa-solid fa-magnifying-glass"></i>
 					<span class="mobile-nav-label">Search</span>
 				</button>
 
-				<a href="<?php echo esc_url($cart_url); ?>" class="mobile-nav-item mobile-cart open-cart-drawer" aria-label="Cart" data-open-drawer="1">
+				<a href="<?php echo esc_url($cart_url); ?>" class="mobile-nav-item mobile-cart open-cart-drawer"
+					aria-label="Cart" data-open-drawer="1">
 					<div class="mobile-cart-icon">
 						<i class="fa-solid fa-cart-shopping"></i>
-						<span class="mobile-cart-count <?php echo $header_count ? 'has-count' : ''; ?>" data-count="<?php echo $header_count; ?>" aria-hidden="true"><?php echo $header_count; ?></span>
+						<span class="mobile-cart-count <?php echo $header_count ? 'has-count' : ''; ?>"
+							data-count="<?php echo $header_count; ?>"
+							aria-hidden="true"><?php echo $header_count; ?></span>
 					</div>
 					<span class="mobile-nav-label">Cart</span>
 				</a>
@@ -155,3 +165,40 @@
 				</button>
 			</div>
 		</nav>
+
+
+		<?php if ((is_page() && !is_front_page()) || is_home()) { ?>
+
+			<section class="title-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h1 class="header-page-title">
+								<?php
+								if (is_home()) {
+									// Get the title of the page set as posts page
+									$blog_page_id = get_option('page_for_posts');
+									echo get_the_title($blog_page_id);
+								} else {
+									the_title();
+								}
+								?>
+							</h1>
+
+							<?php
+							if (function_exists('yoast_breadcrumb')) {
+								yoast_breadcrumb('<div class="breadcrumbs">', '</div>');
+							} else if (function_exists('rank_math_the_breadcrumbs')) {
+								echo '<div class="breadcrumbs">';
+								rank_math_the_breadcrumbs();
+								echo '</div>';
+							} else {
+								custom_breadcrumbs();
+							}
+							?>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<?php } ?>

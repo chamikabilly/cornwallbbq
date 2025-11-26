@@ -424,6 +424,10 @@
         padding: 10px 0 !important;
     }
 
+    #masthead {
+        background: linear-gradient(180deg, #7d2525, transparent);
+    }
+
     .site-branding img {
         width: 100px !important;
         height: 100px !important;
@@ -498,7 +502,9 @@
     }
 
     /* Hide desktop cart/account in mobile */
-    .site-cart-account {
+    .icon-btn.search-toggle,
+    .icon-btn.site-cart.open-cart-drawer,
+    .icon-btn.site-account {
         display: none !important;
     }
 
