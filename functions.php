@@ -173,6 +173,24 @@ function miheli_solutions_scripts()
 		'12.0.0'
 	);
 
+	// Use file modification time as version for cache-busting during development.
+	$contact_css_path = get_template_directory() . '/assets/css/templates/contact.css';
+	wp_enqueue_style(
+		'contact',
+		get_template_directory_uri() . '/assets/css/templates/contact.css',
+		array(),
+		file_exists( $contact_css_path ) ? filemtime( $contact_css_path ) : _S_VERSION
+	);
+
+	$contact_form_con_path = get_template_directory() . '/assets/css/contact-form-con.css';
+	wp_enqueue_style(
+		'contact-form-con',
+		get_template_directory_uri() . '/assets/css/contact-form-con.css',
+		array(),
+		file_exists( $contact_form_con_path ) ? filemtime( $contact_form_con_path ) : _S_VERSION
+	);
+	
+
 
 
 	// Scripts - Load jQuery first, then Bootstrap, then your scripts
