@@ -40,32 +40,7 @@ $theme_url = get_template_directory_uri();
         <div class="container">
 
             <div class="text-center mb-5 contact-title-wrapper">
-                <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/text-bg-img.png"
-                    alt="text-bg-con" class="text-bg-con" loading="lazy">
-SS
-                <h3 class="script-title-con">Contact Details</h3> <!-- add letter spacing 1px or 2px  -->
-            </div>
-
-            <div class="contact-details-wrapper">
-
-                <div class="contact-cards-row">
-                    <div class="contact-card dark-card">
-                        <div class="contact-card-imgbox">
-                            <!-- <img src="<?php echo $theme_url ?>/assets/images/location.svg" alt="Location"> -->
-                                <img src="<?php echo $theme_url ?>/assets/images/location.svg" alt="Location" class="location-img-large">
-                        </div>
-                        <p>438 Second St W,<br>Cornwall, ON K6J 1H1,<br>Canada</p>
-                    </div>
-
-                    <div class="contact-card orange-card">
-                        <div class="contact-card-imgbox">
-                            <img src="<?php echo $theme_url ?>/assets/images/email.svg" alt="Email">
-                        </div>
-                        <p><a href="mailto:info@cornwallbbq.ca">info@cornwallbbq.ca</a></p>
-                    </div>
-
-                    <div class="contact-card dark-card">
-                        <div class="contact-card-imgbox">
+                <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/text-bg-img.p 
                             <img src="<?php echo $theme_url ?>/assets/images/mobile.svg" alt="Phone">
                         </div>
                         <p><a href="tel:+16139331000">+1 613-933-1000</a></p>
