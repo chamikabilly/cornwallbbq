@@ -167,7 +167,22 @@
 		</nav>
 
 
-		<?php if ((is_page() && !is_front_page()) || is_home()) { ?>
+		<?php
+		// Show title for regular pages (not front page), blog home, and WooCommerce pages
+		$show_title = false;
+
+		if ((is_page() && !is_front_page()) || is_home()) {
+			$show_title = true;
+		}
+
+		if (class_exists('WooCommerce')) {
+			// Use WooCommerce conditionals if available. Wrap each call with function_exists
+			if ((function_exists('is_woocommerce') && is_woocommerce()) || (function_exists('is_cart') && is_cart()) || (function_exists('is_checkout') && is_checkout()) || (function_exists('is_product') && is_product()) || (function_exists('is_product_taxonomy') && is_product_taxonomy()) || (function_exists('is_shop') && is_shop())) {
+				$show_title = true;
+			}
+		}
+
+		if ($show_title) { ?>
 
 			<section class="title-holder">
 				<div class="container">
@@ -179,6 +194,19 @@
 									// Get the title of the page set as posts page
 									$blog_page_id = get_option('page_for_posts');
 									echo get_the_title($blog_page_id);
+								} elseif (function_exists('is_shop') && is_shop()) {
+									// Ensure Shop archive always displays as "Shop"
+									echo esc_html__('Shop', 'miheli-solutions');
+								} else if (function_exists('is_product_category') && is_product_category()) {
+									// Show the current product category name
+									$term = get_queried_object();
+									$category_name = '';
+									if ($term && !is_wp_error($term)) {
+										$category_name = isset($term->name) ? $term->name : '';
+									} else {
+										$category_name = single_term_title('', false);
+									}
+									echo esc_html__($category_name, 'miheli-solutions');
 								} else {
 									the_title();
 								}
