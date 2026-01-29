@@ -173,8 +173,6 @@ function miheli_solutions_scripts()
 		'12.0.0'
 	);
 
-
-
 	// Scripts - Load jQuery first, then Bootstrap, then your scripts
 	wp_enqueue_script('jquery'); // Make sure jQuery is loaded
 
