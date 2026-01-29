@@ -366,6 +366,48 @@ function custom_breadcrumbs()
 
 		// Current page
 		echo '<span class="current">' . get_the_title() . '</span>';
+	} else if (function_exists('is_shop') && is_shop()) {
+		// WooCommerce Shop or Product Category
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+		echo '<span class="current">Shop</span>';
+	} else if (function_exists('is_product_category') && is_product_category()) {
+		// Category archive: Home > Shop > Category
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+		echo '<span class="text-light">Shop</span>';
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+		// Show the current product category name
+		$term = get_queried_object();
+		$category_name = '';
+		if ($term && !is_wp_error($term)) {
+			$category_name = isset($term->name) ? $term->name : '';
+		} else {
+			$category_name = single_term_title('', false);
+		}
+		echo '<span class="current">' . esc_html($category_name) . '</span>';
+	} elseif (function_exists('is_product') && is_product()) {
+		// Single product: Home > Shop > Category > Product
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+		echo '<a href="' . get_permalink(wc_get_page_id('shop')) . '">Shop</a>';
+
+		$terms = get_the_terms(get_the_ID(), 'product_cat');
+		if ($terms && !is_wp_error($terms)) {
+			$term = $terms[0];
+			$ancestors = get_ancestors($term->term_id, 'product_cat');
+			$ancestors = array_reverse($ancestors);
+			foreach ($ancestors as $ancestor_id) {
+				$ancestor = get_term($ancestor_id, 'product_cat');
+				if ($ancestor && !is_wp_error($ancestor)) {
+					echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+					echo '<a href="' . esc_url(get_term_link($ancestor)) . '">' . esc_html($ancestor->name) . '</a>';
+				}
+			}
+			echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+			echo '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a>';
+		}
+
+		// Product title
+		echo ' <span class="separator"><i class="fa-solid fa-chevron-right"></i></span> ';
+		echo '<span class="current">' . esc_html(get_the_title()) . '</span>';
 	}
 
 	echo '</div>';
