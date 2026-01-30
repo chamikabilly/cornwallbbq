@@ -57,7 +57,7 @@ get_header();
                             <div class="post-grid-item">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class('grid-post'); ?>>
                                     <?php if (has_post_thumbnail()): ?>
-                                        <div class="grid-post-image mb-3">
+                                        <div class="grid-post-image">
                                             <a href="<?php the_permalink(); ?>">
                                                 <?php the_post_thumbnail('medium', array('class' => 'img-fluid')); ?>
                                             </a>
@@ -67,16 +67,19 @@ get_header();
                                     <div class="grid-post-content">
                                         <div class="post-meta mb-2">
                                             <span class="author">By <?php the_author(); ?></span>
+                                            <span class="seperator">|</span>
                                             <span class="date"><?php echo get_the_date(); ?></span>
                                         </div>
 
-                                        <h3 class="post-title h5">
-                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                        </h3>
+                                        <div class="post-below-content">
+                                            <h3 class="post-title">
+                                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                            </h3>
 
-                                        <a href="<?php the_permalink(); ?>" class="read-more">
-                                            Read More
-                                        </a>
+                                            <a href="<?php the_permalink(); ?>" class="read-more btn btn-primary">
+                                                <i class="fa-solid fa-arrow-up"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
