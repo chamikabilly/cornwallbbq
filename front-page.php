@@ -55,7 +55,7 @@ $our_story_section = get_field('our_story');
         $slide_count = count($hero_slides);
     ?>
         <!-- Slider main container -->
-        <div class="swiper">
+        <div class="swiper hero_swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <?php
