@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Hero Swiper
-    const heroSwiper = new Swiper('.swiper', {
+    const heroSwiper = new Swiper('.hero_swiper', {
         direction: 'horizontal',
         loop: true,
         autoplay: {

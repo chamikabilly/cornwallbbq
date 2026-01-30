@@ -296,6 +296,7 @@
     animation: rotate 10s linear infinite;
     will-change: transform;
     transform-origin: center center;
+    min-width: 700px;
     /* Hints browser to optimize */
     /* Ensures smooth rotation around center */
 }
