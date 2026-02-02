@@ -114,6 +114,15 @@ function load_products_by_category()
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                         </div>
+                        <?php
+                        if ($product->is_on_sale()) {
+                        ?>
+                            <div class="product-sale-badge">
+                                <span class="sale-text">Sale</span>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="product-content-holder">
                         <h6 class="product-title"><?php the_title(); ?></h6>
