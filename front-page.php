@@ -208,6 +208,7 @@ $our_story_section = get_field('our_story');
                             $product_id = $product->get_id();
                             $product_type = $product->get_type();
                             $is_variable = $product_type === 'variable';
+                            $has_price = $product->get_price() !== '' && $product->get_price() !== null;
                     ?>
                             <div class="col-lg-3 col-md-6 col-12">
                                 <div class="product-container animate-on-scroll">
@@ -220,10 +221,12 @@ $our_story_section = get_field('our_story');
                                         }
                                         ?>
                                         <div class="product-hover-actions">
-                                            <button class="add-to-cart-btn" data-product-id="<?php echo $product_id; ?>"
-                                                data-is-variable="<?php echo $is_variable ? 'true' : 'false'; ?>">
-                                                <i class="fa-solid fa-cart-plus"></i>
-                                            </button>
+                                            <?php if ($has_price) : ?>
+                                                <button class="add-to-cart-btn" data-product-id="<?php echo $product_id; ?>"
+                                                    data-is-variable="<?php echo $is_variable ? 'true' : 'false'; ?>">
+                                                    <i class="fa-solid fa-cart-plus"></i>
+                                                </button>
+                                            <?php endif; ?>
                                             <a href="<?php the_permalink(); ?>" class="quick-view-btn">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
