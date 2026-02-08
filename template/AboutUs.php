@@ -95,7 +95,7 @@ $home = home_url();
                                 habitasse
                                 platea dictumst.
                             </p>
-                            <img src="http://localhost/cornwallbbq/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-1.png"
+                            <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-1.png"
                                 alt="bg-small-image" loading="lazy">
                         </div>
                     </div>
@@ -111,7 +111,7 @@ $home = home_url();
                                 habitasse
                                 platea dictumst.
                             </p>
-                            <img src="http://localhost/cornwallbbq/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-2.png"
+                            <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-2.png"
                                 alt="bg-small-image" loading="lazy">
                         </div>
                     </div>
@@ -129,7 +129,7 @@ $home = home_url();
                                 habitasse
                                 platea dictumst.
                             </p>
-                            <img src="http://localhost/cornwallbbq/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-3.png"
+                            <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-3.png"
                                 alt="bg-small-image" loading="lazy">
                         </div>
                     </div>
@@ -145,7 +145,7 @@ $home = home_url();
                                 habitasse
                                 platea dictumst.
                             </p>
-                            <img src="http://localhost/cornwallbbq/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-4.png"
+                            <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/ab-bg-small-4.png"
                                 alt="bg-small-image" loading="lazy">
                         </div>
                     </div>
