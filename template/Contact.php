@@ -43,7 +43,7 @@ $theme_url = get_template_directory_uri();
             <div class="text-center mb-5 contact-title-wrapper">
                 <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/text-bg-img.png"
                     alt="text-bg-con" class="text-bg-con" loading="lazy">
-                SS
+               
                 <h3 class="script-title-con">Contact Details</h3> <!-- add letter spacing 1px or 2px  -->
             </div>
 
