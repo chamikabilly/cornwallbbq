@@ -13,7 +13,7 @@
 // Get contact details from global settings (Options Page)
 $footer_top_group = get_field('footer_top', 'option');
 $footer_middle = get_field('footer_middle', 'option');
-$designer_text = get_field('desf', 'option');
+$designer_text = get_field('designer_text', 'option');
 $designer_url = get_field('designer_url', 'option');
 
 $footer_logo = $footer_top_group['footer_logo'] ?? '';
