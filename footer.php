@@ -32,7 +32,7 @@ $social_media = $footer_middle['social_media'] ?? [];
                 <div class="footer-contianer">
                     <div class="footer-logo-holder">
                         <?php if (!empty($footer_logo)) : ?>
-                            <img src="<?php echo esc_url($footer_logo); ?>" alt="Footer Logo" loading="lazy">
+                            <img src="<?php echo esc_url($footer_logo); ?>" alt="Footer Logo" loading="lazy" class="img-fluid">
                         <?php else : ?>
                             <?php the_custom_logo(); ?>
                         <?php endif; ?>
