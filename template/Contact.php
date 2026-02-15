@@ -7,6 +7,25 @@
 get_header();
 $home = home_url();
 $theme_url = get_template_directory_uri();
+
+// Get ACF fields from page
+$contact_form_title = get_field('section_title');
+$contact_form_shortcode = get_field('short_code');
+$contact_details_title = get_field('section_details_title');
+$map_embed_code = get_field('map_embed_code');
+
+// Get contact details from global settings (Options Page)
+$footer_top = get_field('footer_top', 'option');
+$phone = '';
+$email = '';
+$address = '';
+
+if ($footer_top && isset($footer_top['contact_details'])) {
+    $contact_details = $footer_top['contact_details'];
+    $phone = $contact_details['phone_number'] ?? '';
+    $email = $contact_details['email'] ?? '';
+    $address = $contact_details['address'] ?? '';
+}
 ?>
 
 <section class="page-banner">
@@ -21,11 +40,14 @@ $theme_url = get_template_directory_uri();
                         <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/text-bg-img.png"
                             alt="text-bg-con" class="text-bg-con" loading="lazy">
 
-                        <h3 class="script-title-con">Get In Touch With Us</h3>
+                        <h3 class="script-title-con"><?php echo !empty($contact_form_title) ? esc_html($contact_form_title) : 'Set a Section Title'; ?></h3>
                     </div>
 
                     <div class="contact-form-container-con">
-                        <?php echo do_shortcode('[contact-form-7 id="f0a2f79" title="Home Contact Form"]') ?>
+                        <?php 
+                        $shortcode = !empty($contact_form_shortcode) ? $contact_form_shortcode : '[contact-form-7 id="f0a2f79" title="Home Contact Form"]';
+                        echo do_shortcode($shortcode);
+                        ?>
                     </div>
                 </div>
             </div>
@@ -43,8 +65,8 @@ $theme_url = get_template_directory_uri();
             <div class="text-center mb-5 contact-title-wrapper">
                 <img src="<?php echo $home ?>/wp-content/themes/miheli-solutions/assets/images/text-bg-img.png"
                     alt="text-bg-con" class="text-bg-con" loading="lazy">
-               
-                <h3 class="script-title-con">Contact Details</h3> <!-- add letter spacing 1px or 2px  -->
+
+                <h3 class="script-title-con"><?php echo !empty($contact_details_title) ? esc_html($contact_details_title) : 'Set a Section Title'; ?></h3>
             </div>
 
             <div class="contact-details-wrapper">
@@ -52,30 +74,29 @@ $theme_url = get_template_directory_uri();
                 <div class="contact-cards-row">
                     <div class="contact-card dark-card">
                         <div class="contact-card-imgbox">
-                            <!-- <img src="<?php echo $theme_url ?>/assets/images/location.svg" alt="Location"> -->
                             <img src="<?php echo $theme_url ?>/assets/images/location.svg" alt="Location"
                                 class="location-img-large">
                         </div>
-                        <p>438 Second St W,<br>Cornwall, ON K6J 1H1,<br>Canada</p>
+                        <p><?php echo !empty($address) ? nl2br(esc_html($address)) : 'Address isn\'t available'; ?></p>
                     </div>
 
                     <div class="contact-card orange-card">
                         <div class="contact-card-imgbox">
                             <img src="<?php echo $theme_url ?>/assets/images/email.svg" alt="Email">
                         </div>
-                        <p><a href="mailto:info@cornwallbbq.ca">info@cornwallbbq.ca</a></p>
+                        <p><a href="mailto:<?php echo !empty($email) ? esc_attr($email) : 'Email isn\'t available'; ?>"><?php echo !empty($email) ? esc_html($email) : 'Email isn\'t available'; ?></a></p>
                     </div>
 
                     <div class="contact-card dark-card">
-                                            <div class="contact-card-imgbox">
-                        <img src="<?php echo $theme_url ?>/assets/images/mobile.svg" alt="Phone">
+                        <div class="contact-card-imgbox">
+                            <img src="<?php echo $theme_url ?>/assets/images/mobile.svg" alt="Phone">
+                        </div>
+                        <p><a href="tel:<?php echo !empty($phone) ? esc_attr(str_replace([' ', '-', '(', ')'], '', $phone)) : ''; ?>"><?php echo !empty($phone) ? esc_html($phone) : 'Phone isn\'t available'; ?></a></p>
                     </div>
-                    <p><a href="tel:+16139331000">+1 613-933-1000</a></p>
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 
 
 </div>
