@@ -144,6 +144,16 @@
     overflow: hidden;
     margin-right: 20px;
     transition: transform 320ms cubic-bezier(.2, .9, .2, 1), box-shadow 300ms;
+    width: 100px;
+    height: 100px;
+}
+
+
+.testimonail-section .ts-wrp .ts-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* if you want small avatar hover scale */

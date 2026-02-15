@@ -10,6 +10,19 @@
  * @package Miheli_Solutions
  */
 
+// Get contact details from global settings (Options Page)
+$footer_top_group = get_field('footer_top', 'option');
+$footer_middle = get_field('footer_middle', 'option');
+$designer_text = get_field('desf', 'option');
+$designer_url = get_field('designer_url', 'option');
+
+$footer_logo = $footer_top_group['footer_logo'] ?? '';
+$contact_details = $footer_top_group['contact_details'] ?? [];
+$opening_hours = $footer_top_group['opening_hours']['list_item'] ?? [];
+
+$copyright_text = $footer_middle['copyright_text'] ?? '';
+$social_media = $footer_middle['social_media'] ?? [];
+
 ?>
 
 <section class="footer">
@@ -18,26 +31,30 @@
             <div class="col-md-6 col-lg-3">
                 <div class="footer-contianer">
                     <div class="footer-logo-holder">
-                        <?php the_custom_logo(); ?>
+                        <?php if (!empty($footer_logo)) : ?>
+                            <img src="<?php echo esc_url($footer_logo); ?>" alt="Footer Logo" loading="lazy">
+                        <?php else : ?>
+                            <?php the_custom_logo(); ?>
+                        <?php endif; ?>
                     </div>
                     <div class="footer-information">
                         <ul class="fi-ul">
                             <li class="fi-li">
                                 <div class="fi-li-item">
                                     <div class="fi-icon-wrapper"><i class="fa-solid fa-location-dot"></i></div>
-                                    <div class="fi-desc">436 Second St W, Cornwall, ON K6J 1H1, Canada</div>
+                                    <div class="fi-desc"><?php echo !empty($contact_details['address']) ? nl2br(esc_html($contact_details['address'])) : 'Address isn\'t available'; ?></div>
                                 </div>
                             </li>
                             <li class="fi-li">
                                 <div class="fi-li-item">
                                     <div class="fi-icon-wrapper"><i class="fa-solid fa-at"></i></div>
-                                    <div class="fi-desc">info@cornwallbbq.ca</div>
+                                    <div class="fi-desc"><?php echo !empty($contact_details['email']) ? esc_html($contact_details['email']) : 'Email isn\'t available'; ?></div>
                                 </div>
                             </li>
                             <li class="fi-li">
                                 <div class="fi-li-item">
                                     <div class="fi-icon-wrapper"><i class="fa-solid fa-phone"></i></div>
-                                    <div class="fi-desc">+1 613-933-1000</div>
+                                    <div class="fi-desc"><?php echo !empty($contact_details['phone_number']) ? esc_html($contact_details['phone_number']) : 'Phone isn\'t available'; ?></div>
                                 </div>
                             </li>
 
@@ -53,37 +70,28 @@
                     </div>
                     <div class="footer-oh">
                         <table class="table">
-                            <tr>
-                                <td class="week-day">Monday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Tuesday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Wednesday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Thursday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Friday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Saturday </td>
-                                <td class="time">10:30 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="week-day">Sunday </td>
-                                <td class="time">9 AM–8 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="labor-day" colspan="2">(Labor Day) Hours might differ </td>
-                            </tr>
+                            <?php if (!empty($opening_hours)) : ?>
+                                <?php foreach ($opening_hours as $item) : ?>
+                                    <?php
+                                    $day = $item['day'] ?? '';
+                                    $opening_time = $item['opening_time'] ?? '';
+                                    $closing_time = $item['closing_time'] ?? '';
+                                    $time_range = trim($opening_time . (!empty($closing_time) ? '–' . $closing_time : ''));
+                                    if (empty($day) && empty($time_range)) {
+                                        continue;
+                                    }
+                                    ?>
+                                    <tr>
+                                        <td class="week-day"><?php echo esc_html($day); ?></td>
+                                        <td class="time"><?php echo esc_html($time_range); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td class="week-day">Hours</td>
+                                    <td class="time">Not available</td>
+                                </tr>
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>
@@ -136,15 +144,37 @@
     <div class="container-fluid g-0">
         <div class="row g-0">
             <div class="col-md-6">
-                <p class="copyright-text"> © Copyright 2025 Cornwall B.B.Q , All Rights Reserved.</p>
+                <!-- Copyright Text  -->
+                <p class="copyright-text"> <?php echo !empty($copyright_text) ? esc_html($copyright_text) : 'Add a Copyright Text'; ?></p>
             </div>
             <div class="col-md-6">
                 <ul class="footer-socials">
-                    <li class="list-item"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li class="list-item"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li class="list-item"><a href="#"><i class="fa-brands fa-snapchat"></i></a></li>
-                    <li class="list-item"><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
-
+                    <!-- Social Media Links -->
+                    <?php
+                    $icon_map = array(
+                        'facebook' => 'fa-facebook-f',
+                        'instagram' => 'fa-instagram',
+                        'tiktok' => 'fa-tiktok',
+                        'snapchat' => 'fa-snapchat'
+                    );
+                    ?>
+                    <?php if (!empty($social_media)) : ?>
+                        <?php foreach ($social_media as $social) : ?>
+                            <?php
+                            $url = $social['social_url'] ?? '';
+                            $icon_key = $social['social_icon'] ?? '';
+                            $icon_class = $icon_map[$icon_key] ?? 'fa-link';
+                            if (empty($url)) {
+                                continue;
+                            }
+                            ?>
+                            <li class="list-item">
+                                <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands <?php echo esc_attr($icon_class); ?>"></i>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -155,7 +185,14 @@
     <div class="container-fluid g-0">
         <div class="row g-0">
             <div class="col-md-12">
-                <p class="company-text text-center"> Designed & Developed by Miheli Tech inc</p>
+                <!-- Designer Text  -->
+                <p class="company-text text-center">
+                    <?php if (!empty($designer_url) && !empty($designer_text)) : ?>
+                        <a href="<?php echo esc_url($designer_url); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($designer_text); ?></a>
+                    <?php else : ?>
+                        <?php echo !empty($designer_text) ? esc_html($designer_text) : 'Add a designer text'; ?>
+                    <?php endif; ?>
+                </p>
             </div>
         </div>
     </div>
