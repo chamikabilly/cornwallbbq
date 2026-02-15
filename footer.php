@@ -92,6 +92,9 @@ $social_media = $footer_middle['social_media'] ?? [];
                                     <td class="time">Not available</td>
                                 </tr>
                             <?php endif; ?>
+                                <tr>
+                                    <td class="labor-day" colspan="2">(Labor Day) Hours might differ </td>
+                                </tr>
                         </table>
                     </div>
                 </div>
