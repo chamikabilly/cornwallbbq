@@ -191,7 +191,7 @@ $social_media = $footer_middle['social_media'] ?? [];
                 <!-- Designer Text  -->
                 <p class="company-text text-center">
                     <?php if (!empty($designer_url) && !empty($designer_text)) : ?>
-                        <a href="<?php echo esc_url($designer_url); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($designer_text); ?></a>
+                        <a href="<?php echo esc_url($designer_url); ?>" target="_blank" rel="noopener noreferrer" class="link-light"><?php echo esc_html($designer_text); ?></a>
                     <?php else : ?>
                         <?php echo !empty($designer_text) ? esc_html($designer_text) : 'Add a designer text'; ?>
                     <?php endif; ?>
