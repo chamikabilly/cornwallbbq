@@ -518,19 +518,20 @@
 
 /* Position Contact Form 7 response / error output near the submit button */
 .contact-form-container-con .wpcf7-response-output {
-  position: absolute;
-  left: 16px;
-  bottom: 0px;
-  transform: none;
-  width: auto;
-  max-width: calc(100% - 32px);
-  z-index: 60;
-  background: transparent;
-  color: #ff6b6b;
-  padding: 6px 10px;
-  border-radius: 8px;
-  box-shadow: none;
-  margin-top: 16px;
+    position: absolute;
+    left: auto;
+    bottom: -37px;
+    font-size: 13px;
+    transform: none;
+    width: auto;
+    max-width: calc(100% - 32px);
+    z-index: 60;
+    background: transparent;
+    color: #ff6b6b;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: none;
+    margin: auto !important;
 }
 
 /* Success state — keep visually distinct */
